@@ -1,1 +1,23 @@
 \* Aqui deve ser feito o algoritmo e a cada "atualizacao" por favor anunciar no grupo do whats*/
+/*Data:20/10/2014
+  Disciplina: Algoritmo II
+  Profª: Soraia
+  Alunos:Mickael Langstton,Kairo Bruno, Bruno Lucas
+  Função: urna eleitoral com sistema de segurança*/
+
+#include<stdio.h>
+
+int main() {
+    struct enderemes {
+        char estadomes[100],cidademes[100],bairromes[30],ruames[30],numcasames[10],cepmes[10],compmes;
+    };
+    struct{
+        int codmes,idademes,cpfmes,titulomes,telmes;
+        char nomemes[50],generomes,especialmes[3],qualmes;
+
+    };
+
+}
+
+
+
