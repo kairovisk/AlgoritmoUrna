@@ -11,11 +11,11 @@ int main() {
     struct enderemes {
         char estadomes[100],cidademes[100],bairromes[30],ruames[30],numcasames[10],cepmes[10],compmes;
      };
-      struct {
+    struct {
         int codmes,idademes,cpfmes,titulomes,telmes, turnomes;
         char nomemes[50],generomes,especialmes[3],qualmes, vinculomes,beneficiomes,historicomes;
          struct enderemes endmes;
-      } mesario[10];
+    } mesario[10];
     struct {
         int codcom, CPF, ipurna, ippc;
         char nomecom, acessocom;
