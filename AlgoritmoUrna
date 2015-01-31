@@ -25,8 +25,7 @@ struct{
 struct{
     int numcand, codpart_cand;
     char nomecand, nomepart_cand, tipocand;
-    struct candidato;
-};
+}candidato;
 struct {
     int numtit_eleit, cnpj, rg, codzona, codsecao;
     char nome, profiss;
@@ -95,7 +94,7 @@ void funcmesario(int *opmesfisc)
     }
     else {
       printf("Qual seu codigo de Identificacao?");
-      scanf("%c",&mesario.codfisc);
+      scanf("%d",&mesario.codfisc);
       printf("Qual seu nome Completo?");
       gets(mesario.nomefisc);
       printf("Informe seu Genero. M/F");
@@ -147,34 +146,15 @@ void funcmesario(int *opmesfisc)
     int main(){
     int opcad,opmesfisc;
     printf("Escolha uma Opcao de Cadastro");
-    printf("\n(1) Cadastrar mesários e fiscais\n(2) Cadastrar comitê de apuração\n(3) Cadastrar partidos\n (4) Cadastrar candidatos\n (5) Cadastrar eleitores\n (6) Cadastrar locais de votação\n (7) Cadastrar voto");
+    printf("\n(1) Cadastrar mesarios e fiscais\n(2)Cadastrar comite de apuracao\n(3)Cadastrar partidos\n(4)Cadastrar candidatos\n(5)Cadastrar eleitores\n(6)Cadastrar locais de votacao\n(7)Cadastrar voto");
     scanf(opcad);
     switch (opcad){
     case 1:
       printf("Voce e um Mesario ou Fiscal?\n 1 - Mesario \n 2 - Fiscal");
       scanf("%d",&opmesfisc);
-      funcmesario(&mesario,&opmesfisc);
+      funcmesario(&opmesfisc);
     break;
-    case 2:
-      funccomite();
-    break;
-    case 3:
-      funcpartido();
-    break;
-    case 4:
-      funccandidato();
-    case 5:
-      funceleitores();
-    break;
-    case 6:
-      funclocalvoto();
-    break;
-    case 7:
-      funcvoto();
-    break;
-  return 0;
-};
 
-
-
-
+    };
+     return 0;
+   }
