@@ -1,4 +1,4 @@
-\* Aqui deve ser feito o algoritmo e a cada "atualizacao" por favor anunciar no grupo do whats*/
+/* Aqui deve ser feito o algoritmo e a cada "atualizacao" por favor anunciar no grupo do whats*/
 /*Data:20/10/2014
   Disciplina: Algoritmo II
   Profª: Soraia
@@ -6,45 +6,175 @@
   Função: urna eleitoral com sistema de segurança*/
 
 #include<stdio.h>
+struct enderemes{
+    char estado[100],cidade[100],bairro[30],rua[30],numcasa[10],cep[10];
+ };
+struct{
+    int codmes,codfisc,idademes,idadefisc,cpfmes,cpfisc,titulomes,titulofisc,tel,beneficio,turno,especial;
+    char nomemes[50],nomefisc[50],generomes,generofisc,qual,vinculo[15],qualbeneficio,historico;
+     struct enderemes endmes;
+} mesario;
+struct{
+    int codcom, CPF, ipurna, ippc;
+    char nomecom, acessocom;
+}comite;
+struct{
+    int codpart,quantpart;
+    char nomepart, membrospart;
+}partido[5];
+struct{
+    int numcand, codpart_cand;
+    char nomecand, nomepart_cand, tipocand;
+    struct candidato;
+};
+struct {
+    int numtit_eleit, cnpj, rg, codzona, codsecao;
+    char nome, profiss;
+}eleitor[10];
+struct{
+    char estadozona[100],cidadezona[100],bairrozona[30],ruazona[30],numzona[10],cepzona[10]
+ }enderezona;
+struct {
+    int codzona_vot;
+    char nomezona, secoes;
 
-int main() {
-    struct enderemes {
-        char estadomes[100],cidademes[100],bairromes[30],ruames[30],numcasames[10],cepmes[10],compmes;
-     };
-    struct {
-        int codmes,idademes,cpfmes,titulomes,telmes, turnomes;
-        char nomemes[50],generomes,especialmes[3],qualmes, vinculomes,beneficiomes,historicomes;
-         struct enderemes endmes;
-    } mesario[10];
-    struct {
-        int codcom, CPF, ipurna, ippc;
-        char nomecom, acessocom;
-    } comite;
-    struct {
-        int codpart,quantpart;
-        char nomepart, membrospart;
-    } partido[X];
-    struct {
-        int numcand, codpart_cand;
-        char nomecand, nomepart_cand, tipocand;
-    } candidato[X -   DETALHE];
-    struct {
-        int numtit_eleit, cnpj, rg, codzona, codsecao;
-        char nome, profiss;
-    } eleitor[X -   DETALHE];
-    struct enderezona {
-        char estadozona[100],cidadezona[100],bairrozona[30],ruazona[30],numzona[10],cepzona[10]
-    };
-    struct {
-        int codzona_vot;
-        char nomezona, secoes;
-        struct enderezona endzona;
-    } localvot;
-    struct{
-    int numvotos,codeleitor,numcandidato,codpartido,zonapartido,codsecao,codmesario,codfiscal,datavot,horavot,turno;
-    char nomeleitor[50],nomecandidato[50],nomepartido[50],nomemesario[50],nomefiscal[50];
-    } Regvotos;
-}
+} localvot [20];
+struct Regvotos{
+int numvotos,codeleitor,numcandidato,codpartido,zonapartido,codsecao,codmesario,codfiscal,datavot,horavot,turno;
+char nomeleitor[50],nomecandidato[50],nomepartido[50],nomemesario[50],nomefiscal[50];
+};
+void funcmesario(int *opmesfisc)
+{
+    if (*opmesfisc==1) {
+      printf("Qual seu codigo de Identificacao?");
+      scanf("%d",&mesario.codmes);
+      printf("Qual seu nome Completo?");
+      gets(mesario.nomemes);
+      printf("Informe seu Genero. M/F");
+      gets(mesario.generomes);
+      printf("Digite sua idade");
+      scanf("%d",&mesario.idademes);
+      printf("Digite seu CPF");
+      scanf("%d",&mesario.cpfmes);
+      printf("Informe o Seu Titulo eleitoral");
+      scanf("%d",&mesario.titulomes);
+      printf("Digite seu Telefone");
+      scanf("%d",&mesario.tel);
+      printf("Qual Seu estado?");
+      gets(mesario.endmes.estado);
+      printf("Informe sua cidade");
+      gets(mesario.endmes.cidade);
+      printf("Informe seu bairro");
+      gets(mesario.endmes.bairro);
+      printf("Informe sua rua");
+      gets(mesario.endmes.rua);
+      printf("Digite o numero da sua casa");
+      gets(mesario.endmes.numcasa);
+      printf("Qual seu CEP?");
+      gets(mesario.endmes.cep);
+      printf("Voce tem alguma necessidade especial?   1 - Sim   /   2 -  Nao ");
+      scanf("%d",&mesario.especial);
+      if (mesario.especial==1){
+        printf("Qual?");
+        gets(mesario.qual);
+        }
+      if (*opmesfisc==1)
+        strcpy(mesario.vinculo, "Mesario");
+      else
+        strcpy(mesario.vinculo, "Fiscal");
+      printf("Em qual turno estamos?");
+        scanf("%d",&mesario.turno);
+      printf("Voce possui algum beneficio?  1 - Sim / 2 - Nao");
+        scanf("%d",&mesario.beneficio);
+      if (mesario.beneficio==1){
+        printf("Qual beneficio? Cite Todos");
+        gets(mesario.qualbeneficio);
+      }
+      printf("Voce votou nos anos passados?   1 - Sim / 2 - Nao");
+        gets(mesario.historico);
+    }
+    else {
+      printf("Qual seu codigo de Identificacao?");
+      scanf("%c",&mesario.codfisc);
+      printf("Qual seu nome Completo?");
+      gets(mesario.nomefisc);
+      printf("Informe seu Genero. M/F");
+      gets(mesario.generofisc);
+      printf("Digite sua idade");
+      scanf("%d",&mesario.idadefisc);
+      printf("Digite seu CPF");
+      scanf("%d",&mesario.cpfisc);
+      printf("Informe o Seu Titulo eleitoral");
+      scanf("%d",&mesario.titulofisc);
+      printf("Digite seu Telefone");
+      scanf("%d",&mesario.tel);
+      printf("Qual Seu estado?");
+      gets(mesario.endmes.estado);
+      printf("Informe sua cidade");
+      gets(mesario.endmes.cidade);
+      printf("Informe seu bairro");
+      gets(mesario.endmes.bairro);
+      printf("Informe sua rua");
+      gets(mesario.endmes.rua);
+      printf("Digite o numero da sua casa");
+      gets(mesario.endmes.numcasa);
+      printf("Qual seu CEP?");
+      gets(mesario.endmes.cep);
+      printf("Voce tem alguma necessidade especial?   1 - Sim   /   2 -  Nao ");
+      scanf("%d",&mesario.especial);
+      if (mesario.especial==1){
+        printf("Qual?");
+        gets(mesario.qual);
+        }
+      if (*opmesfisc==1)
+        strcpy(mesario.vinculo, "Mesario");
+      else
+        strcpy(mesario.vinculo, "Fiscal");
+      printf("Em qual turno estamos?");
+        scanf("%d",&mesario.turno);
+      printf("Voce possui algum beneficio?  1 - Sim / 2 - Nao");
+        scanf("%d",&mesario.beneficio);
+      if (mesario.beneficio==1){
+        printf("Qual beneficio? Cite Todos");
+        gets(mesario.qualbeneficio);
+      }
+      printf("Voce votou nos anos passados?   1 - Sim / 2 - Nao");
+        gets(mesario.historico);
+  };
+};
+
+
+    int main(){
+    int opcad,opmesfisc;
+    printf("Escolha uma Opcao de Cadastro");
+    printf("\n(1) Cadastrar mesários e fiscais\n(2) Cadastrar comitê de apuração\n(3) Cadastrar partidos\n (4) Cadastrar candidatos\n (5) Cadastrar eleitores\n (6) Cadastrar locais de votação\n (7) Cadastrar voto");
+    scanf(opcad);
+    switch (opcad){
+    case 1:
+      printf("Voce e um Mesario ou Fiscal?\n 1 - Mesario \n 2 - Fiscal");
+      scanf("%d",&opmesfisc);
+      funcmesario(&mesario,&opmesfisc);
+    break;
+    case 2:
+      funccomite();
+    break;
+    case 3:
+      funcpartido();
+    break;
+    case 4:
+      funccandidato();
+    case 5:
+      funceleitores();
+    break;
+    case 6:
+      funclocalvoto();
+    break;
+    case 7:
+      funcvoto();
+    break;
+  return 0;
+};
+
 
 
 
