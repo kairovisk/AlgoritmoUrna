@@ -6,34 +6,38 @@
   Função: urna eleitoral com sistema de segurança*/
 
 #include<stdio.h>
+void funcmesario(int *opmesfisc);
+void funccomite(float ippc,float ipurna);
+void registropartidos();
+void registrocandidato();
 struct enderemes{
     char estado[100],cidade[100],bairro[30],rua[30],numcasa[10],cep[10];
  };
-struct{
+struct mesario{
     int codmes,codfisc,idademes,idadefisc,cpfmes,cpfisc,titulomes,titulofisc,tel,beneficio,turno,especial;
     char nomemes[50],nomefisc[50],generomes,generofisc,qual,vinculo[15],qualbeneficio,historico;
      struct enderemes endmes;
 } mesario;
-struct{
-    int codcom, CPF, ipurna, ippc;
+struct comite{
+    int codcom, CPF, ip_urna, ip_pc;
     char nomecom, acessocom;
 }comite;
-struct{
+struct partido{
     int codpart,quantpart;
-    char nomepart, membrospart;
-}partido[5];
-struct{
+    char nomepart, membrospart[40];
+}partido[10];
+struct candidato{
     int numcand, codpart_cand;
     char nomecand, nomepart_cand, tipocand;
-}candidato;
-struct {
+}candidato[10];
+struct eleitor{
     int numtit_eleit, cnpj, rg, codzona, codsecao;
     char nome, profiss;
 }eleitor[10];
-struct{
+struct enderezona{
     char estadozona[100],cidadezona[100],bairrozona[30],ruazona[30],numzona[10],cepzona[10]
  }enderezona;
-struct {
+struct localvot{
     int codzona_vot;
     char nomezona, secoes;
 
@@ -42,7 +46,31 @@ struct Regvotos{
 int numvotos,codeleitor,numcandidato,codpartido,zonapartido,codsecao,codmesario,codfiscal,datavot,horavot,turno;
 char nomeleitor[50],nomecandidato[50],nomepartido[50],nomemesario[50],nomefiscal[50];
 };
-void funcmesario(int *opmesfisc)
+
+    int main(){
+        int opcad,opmesfisc,
+        float   ippc,ipurna;
+        ippc=198.211.1.1;
+        ipurna=230.191.1.1;
+        printf("Escolha uma Opcao de Cadastro");
+        printf("\n(1) Cadastrar mesarios e fiscais\n(2)Cadastrar comite de apuracao\n(3)Cadastrar partidos\n(4)Cadastrar candidatos\n(5)Cadastrar eleitores\n(6)Cadastrar locais de votacao\n(7)Cadastrar voto");
+        scanf(opcad);
+        switch (opcad){
+        case 1:
+            printf("Voce e um Mesario ou Fiscal?\n 1 - Mesario \n 2 - Fiscal");
+            scanf("%d",&opmesfisc);
+            funcmesario(&opmesfisc);
+            break;
+        case 2:
+            funccomite();
+            break;
+        case 3:
+            registropartidos();      
+
+    };
+     return 0;
+   }
+   void funcmesari(o(int *opmesfisc)
 {
     if (*opmesfisc==1) {
       printf("Qual seu codigo de Identificacao?");
@@ -141,20 +169,88 @@ void funcmesario(int *opmesfisc)
         gets(mesario.historico);
   };
 };
-
-
-    int main(){
-    int opcad,opmesfisc;
-    printf("Escolha uma Opcao de Cadastro");
-    printf("\n(1) Cadastrar mesarios e fiscais\n(2)Cadastrar comite de apuracao\n(3)Cadastrar partidos\n(4)Cadastrar candidatos\n(5)Cadastrar eleitores\n(6)Cadastrar locais de votacao\n(7)Cadastrar voto");
-    scanf(opcad);
-    switch (opcad){
-    case 1:
-      printf("Voce e um Mesario ou Fiscal?\n 1 - Mesario \n 2 - Fiscal");
-      scanf("%d",&opmesfisc);
-      funcmesario(&opmesfisc);
-    break;
-
-    };
-     return 0;
+   void funccomite(float ippc,float ipurna)
+   {
+       printf("Qual seu código de identificação?");
+       scanf("%d",&comite.codcom);
+       printf("Digite seu nome Completo");
+       gets(comite.nomecom);
+       printf("Informe seu CPF");
+       scanf("%d",&comite.CPF);
+       comite.ip_pc=ippc;
+       comite.ip_urna=ipurna;
+   }
+   void registropartidos()
+   {
+       int i,j;
+       for (i=0;i=5;i++)
+       {
+            printf("Informe o codigo do Partido");
+            scanf("%d",&partido[i].codpart);
+            printf("Informe o nome do Partido");
+            gets(&partido[i].nomepart);
+            printf("Quantos candidatos tem o partido?");
+            scanf("%d",&partido[i].quantpart);
+            printf("Digite o nome dos membros");
+            for (j=0;j=partido[i].quantpart;j++);
+                gets(partido[i].membrospart[j]);           
+       }
+     
+   }
+   void registrocandidato()
+   {
+       int i,j,k;
+       for (i=1;i=10;i++)
+       {    
+           printf("Digite seu numero");
+           scanf("%d",&candidato[i].numcand);
+           printf("Digite seu nome");
+           gets(candidato[i].nomecand);
+           printf("Qual seu Partido? \n 1-%c\n 2-%c\n 3-%c\n 3-%c\n 4-%c\n 5-%c\n 6-%c\n 7-%c\n 8-%c\n 9-%c\n 10-%c\n",partido[1].nomepart,partido[2].nomepart,partido[3].nomepart,partido[4].nomepart,partido[5].nomepart,partido[6].nomepart,partido[7].nomepart,partido[8].nomepart,partido[9].nomepart,partido[10].nomepart);
+           scanf("%d",&k);
+           switch(k){
+                case 1:
+                    candidato[i].codpart_cand=partido[1].codpart;
+                    candidato[i].nomepart_cand=partido[1].nomepart;
+                break;
+                case 2:
+                    candidato[i].codpart_cand=partido[2].codpart;
+                    candidato[i].nomepart_cand=partido[2].nomepart;
+                break;
+                case 3:
+                    candidato[i].codpart_cand=partido[3].codpart;
+                    candidato[i].nomepart_cand=partido[3].nomepart;
+                break;
+                case 4:
+                    candidato[i].codpart_cand=partido[4].codpart;
+                    candidato[i].nomepart_cand=partido[4].nomepart;
+                break;
+                case 5:
+                    candidato[i].codpart_cand=partido[5].codpart;
+                    candidato[i].nomepart_cand=partido[5].nomepart;
+                break;
+                case 6:
+                     candidato[i].codpart_cand=partido[6].codpart;
+                     candidato[i].nomepart_cand=partido[6].nomepart;
+                 break;
+                 case 7:
+                     candidato[i].codpart_cand=partido[7].codpart;
+                     candidato[i].nomepart_cand=partido[7].nomepart;
+                 break;
+                 case 8:
+                     candidato[i].codpart_cand=partido[8].codpart;
+                     candidato[i].nomepart_cand=partido[8].nomepart;
+                 break;
+                 case 9:
+                     candidato[i].codpart_cand=partido[9].codpart;
+                     candidato[i].nomepart_cand=partido[9].nomepart;
+                 break;
+                 case 10:
+                     candidato[i].codpart_cand=partido[10].codpart;
+                     candidato[i].nomepart_cand=partido[10].nomepart;
+                 break;
+           }
+           
+        tipo de candidatura (deputado
+       estadual, deputado federal, dentre outros);
    }
