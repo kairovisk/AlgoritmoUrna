@@ -10,6 +10,7 @@ void funcmesario(int *opmesfisc);
 void funccomite(float ippc,float ipurna);
 void registropartidos();
 void registrocandidato();
+void registroeleitor();
 void registrolocal_vot();
 struct enderemes{
     char estado[100],cidade[100],bairro[30],rua[30],numcasa[10],cep[10];
@@ -255,6 +256,26 @@ char nomeleitor[50],nomecandidato[50],nomepartido[50],nomemesario[50],nomefiscal
            
         tipo de candidatura (deputado
        estadual, deputado federal, dentre outros);
+   }
+     void registroeleitor()
+    {
+       int numtit_eleit, cnpj, rg, codzona, codsecao;
+       char nome, profiss;
+       
+       printf("Informe o seu nome.");
+       gets(eleitor.nome);
+       printf("Informe o número do seu titulo eleitoral.");
+       scanf("%d",&eleitor.numtit_eleit);
+       printf("Informe o seu CNPJ.");
+       scanf("%d",&eleitor.cnpj);
+       printf("Informe o seu rg.");
+       scanf("%d",&eleitor.rg);
+       printf("Informe o código da zona.");
+       scanf("%d",&eleitor.codzona);
+       printf("Informe o código da seção.");
+       scanf("%d",&eleitor.codsecao);
+       printf("Informe a sua profissão.");
+       gets(eleitor.profiss);
    }
    void registrolocal_vot()
    {
