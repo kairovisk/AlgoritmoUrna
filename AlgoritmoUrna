@@ -11,6 +11,7 @@ void funccomite(float ippc,float ipurna);
 void registropartidos();
 void registrocandidato();
 void registroeleitor();
+void cad_vot();
 void registrolocal_vot();
 struct enderemes{
     char estado[100],cidade[100],bairro[30],rua[30],numcasa[10],cep[10];
@@ -43,6 +44,9 @@ struct localvot{
     int codzona_vot;
     char nomezona, secoes;
     struct enderezona endzona;
+    struct cadvot{
+    int opvot,numtit;
+}cadvot[10];
 }localvot[10];
 struct Regvotos{
     int numvotos,codeleitor,numcandidato,codpartido,zonapartido,codsecao,codmesario,codfiscal,datavot,horavot,turno;
@@ -365,4 +369,33 @@ void registrolocal_vot()
     fflush(stdin);
     gets(enderezona.cepzona);
     
+}
+void cad_votos()
+   {
+       int i;
+     printf("\nDeputado Estadual.");
+     for(i=0;i=10;i++){
+      printf("%d",candidato[i].numcand," - %c\n",candidato[i].nomecand);
+     };
+     scanf("%d\n",&cadvot[i].opvot);
+     printf("\nDeputado Federal.");
+     for(i=0;i=10;i++){
+      printf("%d\n",candidato[i].numcand," - %c\n",candidato[i].nomecand);
+     };
+     scanf("%d\n",&cadvot[i].opvot);
+     printf("\nSenador.");
+     for(i=0;i=10;i++){
+      printf("%d\n",candidato[i].numcand," - %c\n",candidato[i].nomecand);
+     };
+     scanf("%d\n",&cadvot[i].opvot);
+     printf("\nGovernador.");
+     for(i=0;i=10;i++){
+      printf("%d\n",candidato[i].numcand," - %c\n",candidato[i].nomecand);
+     };
+     scanf("%d\n",&cadvot[i].opvot);
+     printf("\nPresidente.");
+     for(i=0;i=10;i++){
+      printf("%d\n",candidato[i].numcand," - %c\n",candidato[i].nomecand);
+     };
+      scanf("%d\n",&cadvot[i].opvot);
 }
