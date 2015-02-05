@@ -44,176 +44,216 @@ struct localvot{
     char nomezona, secoes;
     struct enderezona endzona;
 }localvot[10];
-struct cadvot{
-    int opvot,numtit;
-}cadvot[10];
 struct Regvotos{
     int numvotos,codeleitor,numcandidato,codpartido,zonapartido,codsecao,codmesario,codfiscal,datavot,horavot,turno;
     char nomeleitor[50],nomecandidato[50],nomepartido[50],nomemesario[50],nomefiscal[50];
 };
 
 int main(){
-    int opcad,opmesfisc;
+    int opcad,opmesfisc,votoop;
     char ippc,ipurna;
-    ippc=198.912;
+    ippc=198.;
     ipurna=230.140;
-    printf("Escolha uma Opcao de Cadastro");
-    printf("\n(1) Cadastrar mesarios e fiscais\n(2)Cadastrar comite de apuracao\n(3)Cadastrar partidos\n(4)Cadastrar candidatos\n(5)Cadastrar eleitores\n(6)Cadastrar locais de votacao\n(7)Cadastrar voto");
-    scanf(opcad);
-    switch (opcad){
-    case 1:
-        printf("Voce e um Mesario ou Fiscal?\n 1 - Mesario \n 2 - Fiscal");
-        scanf("%d",&opmesfisc);
-        funcmesario(&opmesfisc);
-        break;
-    case 2:
-        funccomite(ippc,ipurna);
-        break;
-    case 3:
-        registropartidos();
-
-    };
+    
+    do{
+        printf("\n Escolha uma Opcao de Cadastro");
+        printf("\n(1)Cadastrar mesarios e fiscais\n(2)Cadastrar comite de apuracao\n(3)Cadastrar partidos\n(4)Cadastrar candidatos\n(5)Cadastrar eleitores\n(6)Cadastrar locais de votacao\n(7)Cadastrar voto\n");
+        scanf("%d",&opcad);
+        switch (opcad){
+        case 1:
+            printf("Voce e um Mesario ou Fiscal?\n 1 - Mesario \n 2 - Fiscal\n");
+            scanf("%d",&opmesfisc);
+            funcmesario(&opmesfisc);
+            break;
+        case 2:
+            funccomite(ippc,ipurna);
+            break;
+        case 3:
+            registropartidos();
+            break;
+        case 4:
+            registrocandidato();
+            break;
+        case 5:
+            registroeleitor();
+            break;
+        case 6:
+            registrolocal_vot();
+            break;
+        }
+        printf("Deseja Repetir?zn  1 - Sim \n 2 - Nao \n");
+        scanf("%d",&votoop);
+    }while (votoop==1);
     return 0;
 }
 void funcmesario(int *opmesfisc)
 {
     if (*opmesfisc==1) {
-        printf("Qual seu codigo de Identificacao?");
+        printf("Qual seu codigo de Identificacao?\n");
         scanf("%d",&mesario.codmes);
-        printf("Qual seu nome Completo?");
+        printf("Qual seu nome Completo?\n");
+        fflush(stdin);
         gets(mesario.nomemes);
-        printf("Informe seu Genero. M/F");
-        gets(mesario.generomes);
-        printf("Digite sua idade");
+        printf("Informe seu Genero. M/F\n");
+        fflush(stdin);
+        gets(&mesario.generomes);
+        printf("Digite sua idade\n");
         scanf("%d",&mesario.idademes);
-        printf("Digite seu CPF");
+        printf("Digite seu CPF\n");
         scanf("%d",&mesario.cpfmes);
-        printf("Informe o Seu Titulo eleitoral");
+        printf("Informe o Seu Titulo eleitoral\n");
         scanf("%d",&mesario.titulomes);
-        printf("Digite seu Telefone");
+        printf("Digite seu Telefone\n");
         scanf("%d",&mesario.tel);
-        printf("Qual Seu estado?");
+        printf("Qual Seu estado?\n");
+        fflush(stdin);
         gets(mesario.endmes.estado);
-        printf("Informe sua cidade");
+        printf("Informe sua cidade\n");
+        fflush(stdin);
         gets(mesario.endmes.cidade);
-        printf("Informe seu bairro");
+        printf("Informe seu bairro\n");
+        fflush(stdin);
         gets(mesario.endmes.bairro);
-        printf("Informe sua rua");
+        printf("Informe sua rua\n");
+        fflush(stdin);
         gets(mesario.endmes.rua);
-        printf("Digite o numero da sua casa");
+        printf("Digite o numero da sua casa\n");
+        fflush(stdin);
         gets(mesario.endmes.numcasa);
-        printf("Qual seu CEP?");
+        printf("Qual seu CEP?\n");
+        fflush(stdin);
         gets(mesario.endmes.cep);
-        printf("Voce tem alguma necessidade especial?   1 - Sim   /   2 -  Nao ");
+        printf("Voce tem alguma necessidade especial?   1 - Sim   /   2 -  Nao \n");
         scanf("%d",&mesario.especial);
         if (mesario.especial==1){
-            printf("Qual?");
+            printf("Qual?\n");
+            fflush(stdin);
             gets(mesario.qual);
         }
         if (*opmesfisc==1)
-            strcpy(mesario.vinculo, "Mesario");
+            strcpy(mesario.vinculo,"Mesario");
         else
-            strcpy(mesario.vinculo, "Fiscal");
-        printf("Em qual turno estamos?");
-        scanf("%d",&mesario.turno);
-        printf("Voce possui algum beneficio?  1 - Sim / 2 - Nao");
-        scanf("%d",&mesario.beneficio);
+        {
+            strcpy(mesario.vinculo,"Fiscal");
+            printf("Em qual turno estamos?");
+            scanf("%d",&mesario.turno);
+            printf("Voce possui algum beneficio?  1 - Sim / 2 - Nao\n");
+            scanf("%d",&mesario.beneficio);
+        }
         if (mesario.beneficio==1){
             printf("Qual beneficio? Cite Todos");
+            fflush(stdin);
             gets(mesario.qualbeneficio);
         }
-        printf("Voce votou nos anos passados?   1 - Sim / 2 - Nao");
+        printf("Voce votou nos anos passados?   1 - Sim / 2 - Nao\n");
+        fflush(stdin);
         gets(mesario.historico);
     }
     else {
-        printf("Qual seu codigo de Identificacao?");
+        printf("Qual seu codigo de Identificacao?\n");
         scanf("%d",&mesario.codfisc);
-        printf("Qual seu nome Completo?");
+        printf("Qual seu nome Completo?\n");
+        fflush(stdin);
         gets(mesario.nomefisc);
-        printf("Informe seu Genero. M/F");
+        printf("Informe seu Genero. M/F\n");
+        fflush(stdin);
         gets(mesario.generofisc);
-        printf("Digite sua idade");
+        printf("Digite sua idade\n");
         scanf("%d",&mesario.idadefisc);
-        printf("Digite seu CPF");
+        printf("Digite seu CPF\n");
         scanf("%d",&mesario.cpfisc);
-        printf("Informe o Seu Titulo eleitoral");
+        printf("Informe o Seu Titulo eleitoral\n");
         scanf("%d",&mesario.titulofisc);
-        printf("Digite seu Telefone");
+        printf("Digite seu Telefone\n");
         scanf("%d",&mesario.tel);
-        printf("Qual Seu estado?");
+        printf("Qual Seu estado?\n");
+        fflush(stdin);
         gets(mesario.endmes.estado);
-        printf("Informe sua cidade");
+        printf("Informe sua cidade\n");
+        fflush(stdin);
         gets(mesario.endmes.cidade);
-        printf("Informe seu bairro");
+        fflush(stdin);
+        printf("Informe seu bairro\n");
+        fflush(stdin);
         gets(mesario.endmes.bairro);
-        printf("Informe sua rua");
+        printf("Informe sua rua\n");
+        fflush(stdin);
         gets(mesario.endmes.rua);
-        printf("Digite o numero da sua casa");
+        printf("Digite o numero da sua casa\n");
+        fflush(stdin);
         gets(mesario.endmes.numcasa);
-        printf("Qual seu CEP?");
+        printf("Qual seu CEP?\n");
+        fflush(stdin);
         gets(mesario.endmes.cep);
-        printf("Voce tem alguma necessidade especial?   1 - Sim   /   2 -  Nao ");
+        printf("Voce tem alguma necessidade especial?   1 - Sim   /   2 -  Nao \n");
         scanf("%d",&mesario.especial);
         if (mesario.especial==1){
-            printf("Qual?");
+            printf("Qual?\n");
+            fflush(stdin);
             gets(mesario.qual);
         }
         if (*opmesfisc==1)
             strcpy(mesario.vinculo, "Mesario");
         else
             strcpy(mesario.vinculo, "Fiscal");
-        printf("Em qual turno estamos?");
+        printf("Em qual turno estamos?\n");
         scanf("%d",&mesario.turno);
-        printf("Voce possui algum beneficio?  1 - Sim / 2 - Nao");
+        printf("Voce possui algum beneficio?  1 - Sim / 2 - Nao \n");
         scanf("%d",&mesario.beneficio);
         if (mesario.beneficio==1){
-            printf("Qual beneficio? Cite Todos");
+            printf("Qual beneficio? Cite Todos\n");
+            fflush(stdin);
             gets(mesario.qualbeneficio);
         }
-        printf("Voce votou nos anos passados?   1 - Sim / 2 - Nao");
+        printf("Voce votou nos anos passados?   1 - Sim / 2 - Nao\n");
+        fflush(stdin);
         gets(mesario.historico);
     };
-};
+}
 void funccomite(float ippc,float ipurna)
 {
-    printf("Qual seu código de identificação?");
+    printf("Qual seu código de identificação?\n");
     scanf("%d",&comite.codcom);
-    printf("Digite seu nome Completo");
+    printf("Digite seu nome Completo\n");
     gets(comite.nomecom);
-    printf("Informe seu CPF");
+    printf("Informe seu CPF\n");
     scanf("%d",&comite.CPF);
     comite.ip_pc=ippc;
     comite.ip_urna=ipurna;
     const time_t timer = time(NULL);
     strcpy(comite.acessocom, ctime(&timer));
-    printf("Ultimo Acesso =%c ", comite.acessocom,"\n Ip da Maquina = %c",ippc);
+    printf("Ultimo Acesso =%c ", comite.acessocom,"\n Ip da Maquina = %c\n",ippc);
+    
     return 0;
-}
+    
+};
 void registropartidos()
 {
     int i,j;
     for (i=0;i=5;i++)
     {
-        printf("Informe o codigo do Partido");
+        printf("Informe o codigo do Partido\n");
         scanf("%d",&partido[i].codpart);
-        printf("Informe o nome do Partido");
+        printf("Informe o nome do Partido\n");
+        fflush(stdin);
         gets(&partido[i].nomepart);
-        printf("Quantos candidatos tem o partido?");
+        printf("Quantos candidatos tem o partido?\n");
         scanf("%d",&partido[i].quantpart);
-        printf("Digite o nome dos membros");
+        printf("Digite o nome dos membros\n");
         for (j=0;j=partido[i].quantpart;j++);
+        fflush(stdin);
         gets(partido[i].membrospart[j]);
     }
-
+    
 }
 void registrocandidato()
 {
     int i,j,k,tipocand;
     for (i=1;i=10;i++)
     {
-        printf("Digite seu numero");
+        printf("Digite seu numero\n");
         scanf("%d",&candidato[i].numcand);
-        printf("Digite seu nome");
+        printf("Digite seu nome\n");
         gets(candidato[i].nomecand);
         printf("Qual seu Partido? \n 1-%c\n 2-%c\n 3-%c\n 3-%c\n 4-%c\n 5-%c\n 6-%c\n 7-%c\n 8-%c\n 9-%c\n 10-%c\n",partido[1].nomepart,partido[2].nomepart,partido[3].nomepart,partido[4].nomepart,partido[5].nomepart,partido[6].nomepart,partido[7].nomepart,partido[8].nomepart,partido[9].nomepart,partido[10].nomepart);
         scanf("%d",&k);
@@ -258,8 +298,8 @@ void registrocandidato()
             candidato[i].codpart_cand=partido[10].codpart;
             candidato[i].nomepart_cand=partido[10].nomepart;
             break;
-            printf("Qual sua Candidatura?");
-            printf("\n 1 - Deputado Estadual\n 2- Deputado Federal\n 3 - Prefeito\n 4 - Presidencia");
+            printf("Qual sua Candidatura?\n");
+            printf("\n 1 - Deputado Estadual\n 2- Deputado Federal\n 3 - Prefeito\n 4 - Presidencia\n");
             scanf(tipocand);
             if (tipocand==1)
                 strcpy(candidato[i].tipocand, "Deputado Estadual");
@@ -269,15 +309,17 @@ void registrocandidato()
                 strcpy(candidato[i].tipocand, "Prefeito");
             if (tipocand==4)
                 strcpy(candidato[i].tipocand, "Presendecia");
-
-
+            
+            
         }
-
+        
     }
-    void registroeleitor()
+}
+void registroeleitor()
+{
+    int i;
+    for (i=1;i=10;i++)
     {
-
-
         printf("Informe o seu nome.");
         gets(eleitor[i].nome);
         printf("Informe o número do seu titulo eleitoral.");
@@ -293,26 +335,34 @@ void registrocandidato()
         printf("Informe a sua profissão.");
         gets(eleitor[i].profiss);
     }
-    void registrolocal_vot()
-    {
-
-        printf("Informe o código da zona.");
-        scanf("%d",&localvot[i].codzona_vot);
-        printf("Digite o nome da zona.");
-        gets(localvot[i].nomezona);
-        printf("Informe as seções.");
-        gets(localvot[i].secoes);
-        printf("Informe o estado.");
-        gets(enderezona.estadozona);
-        printf("Informe a cidade.");
-        gets(enderezona.cidadezona);
-        printf("Informe o bairro.");
-        gets(enderezona.bairrozona);
-        printf("Informe o nome da rua.");
-        gets(enderezona.ruazona);
-        printf("Informe o número da zona.");
-        scanf("%d",&enderezona.numzona);
-        printf("Informe o CEP da zona.");
-        gets(enderezona.cepzona);
-
-    }
+}
+void registrolocal_vot()
+{
+    int i;
+    printf("Informe o código da zona.\n");
+    scanf("%d",&localvot[i].codzona_vot);
+    printf("Digite o nome da zona.\n");
+    fflush(stdin);
+    gets(localvot[i].nomezona);
+    printf("Informe as seções.\n");
+    fflush(stdin);
+    gets(localvot[i].secoes);
+    printf("Informe o estado.\n");
+    fflush(stdin);
+    gets(enderezona.estadozona);
+    printf("Informe a cidade.\n");
+    fflush(stdin);
+    gets(enderezona.cidadezona);
+    printf("Informe o bairro.\n");
+    fflush(stdin);
+    gets(enderezona.bairrozona);
+    printf("Informe o nome da rua.\n");
+    fflush(stdin);
+    gets(enderezona.ruazona);
+    printf("Informe o número da zona.\n");
+    scanf("%d",&enderezona.numzona);
+    printf("Informe o CEP da zona.\n");
+    fflush(stdin);
+    gets(enderezona.cepzona);
+    
+}
