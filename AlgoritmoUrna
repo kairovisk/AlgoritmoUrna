@@ -11,7 +11,7 @@ void funccomite(float ippc,float ipurna);
 void registropartidos();
 void registrocandidato();
 void registroeleitor();
-void cad_vot();
+void cadvot();
 void registrolocal_vot();
 struct enderemes{
     char estado[100],cidade[100],bairro[30],rua[30],numcasa[10],cep[10];
@@ -370,7 +370,7 @@ void registrolocal_vot()
     gets(enderezona.cepzona);
     
 }
-void cad_votos()
+void cadvot()
    {
        int i;
      printf("\nDeputado Estadual.");
