@@ -44,6 +44,9 @@ struct localvot{
     char nomezona, secoes;
     struct enderezona endzona;
 }localvot[10];
+struct cadvot{
+    int opvot,numtit;
+}cadvot[10];
 struct Regvotos{
     int numvotos,codeleitor,numcandidato,codpartido,zonapartido,codsecao,codmesario,codfiscal,datavot,horavot,turno;
     char nomeleitor[50],nomecandidato[50],nomepartido[50],nomemesario[50],nomefiscal[50];
