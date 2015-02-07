@@ -13,7 +13,6 @@ void registrocandidato();
 void registroeleitor();
 void cadvot();
 void registrolocal_vot();
-void candmaisvotado();
 void qtdvotocand();
 void eleitoresnvoto();
 struct enderemes{
@@ -89,9 +88,6 @@ int main(){
             break;
         case 7:
             cadvot();
-            break;
-        case 8:
-            candmaisvotado();
             break;
         case 9: 
             
