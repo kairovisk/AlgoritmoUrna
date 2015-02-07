@@ -13,6 +13,9 @@ void registrocandidato();
 void registroeleitor();
 void cadvot();
 void registrolocal_vot();
+void candmaisvotado();
+void qtdvotocand();
+void eleitoresnvoto();
 struct enderemes{
     char estado[100],cidade[100],bairro[30],rua[30],numcasa[10],cep[10];
 };
@@ -61,7 +64,7 @@ int main(){
     
     do{
         printf("\n Escolha uma Opcao de Cadastro");
-        printf("\n(1)Cadastrar mesarios e fiscais\n(2)Cadastrar comite de apuracao\n(3)Cadastrar partidos\n(4)Cadastrar candidatos\n(5)Cadastrar eleitores\n(6)Cadastrar locais de votacao\n(7)Cadastrar voto\n");
+        printf("\n(1)Cadastrar mesarios e fiscais\n(2)Cadastrar comite de apuracao\n(3)Cadastrar partidos\n(4)Cadastrar candidatos\n(5)Cadastrar eleitores\n(6)Cadastrar locais de votacao\n(7)Cadastrar voto\n(8)Candidatos mais votados\n(9)FAZER\n(10)FAZER\n(11)Quantidade de votos nos candidatos\n(12)Eleitores que não votaram\n");
         scanf("%d",&opcad);
         switch (opcad){
         case 1:
@@ -86,6 +89,21 @@ int main(){
             break;
         case 7:
             cadvot();
+            break;
+        case 8:
+            candmaisvotado();
+            break;
+        case 9: 
+            
+            break;
+        case 10:
+            
+            break;
+        case 11:
+            qtdvotocand();
+            break;
+        case 12:
+            eleitoresnvoto();
             break;
         }
         printf("Deseja Repetir?zn  1 - Sim \n 2 - Nao \n");
@@ -375,30 +393,166 @@ void registrolocal_vot()
 }
 void cadvot()
    {
-       int i;
+       int i, nv1, nv2, nv3, nv4, nv5;
+       int de1=0,de2=0,de3=0,de4=0,de5=0,de6=0,de7=0,de8=0,de9=0,de10=0;
+       int df1=0,df2=0,df3=0,df4=0,df5=0,df6=0,df7=0,df8=0,df9=0,df10=0;
+       int sn1=0,sn2=0,sn3=0,sn4=0,sn5=0,sn6=0,sn7=0,sn8=0,sn9=0,sn10=0,
+       int gov1=0,gov2=0,gov3=0,gov4=0,gov5=0,gov6=0,gov7=0,gov8=0,gov9=0,gov10=0;
+       int pres1=0,pres2=0,pres3=0,pres4=0,pres5=0,pres6=0,pres7=0,pres8=0,pres9=0,pres10=0;
      printf("\nDeputado Estadual.");
      for(i=0;i=10;i++){
       printf("%d",candidato[i].numcand," - %c\n",candidato[i].nomecand);
      };
+     If (candidato[i].numcand == 1)
+       de1 = de1 + 1;
+      Else if (candidato[i].numcand == 2)
+        de2 = de2 + 1;
+      Else if (candidato[i].numcand == 3)
+        de3 = de3 + 1;
+      Else if (candidato[i].numcand == 4)
+        de4 = de4 + 1;
+      Else if (candidato[i].numcand == 5)
+        de5 = de5 + 1;
+      Else if (candidato[i].numcand == 6)
+        de6 = de6 + 1;
+      Else if (candidato[i].numcand == 7)
+        de7 = de7 + 1;
+      Else if (candidato[i].numcand == 8)
+        de8 = de8 + 1;
+      Else if (candidato[i].numcand == 9)
+        de9 = de9 + 1;
+      Else if (candidato[i].numcand == 10)
+        de10 = de10 + 1;
+      Else nv1 = nv1 +1;
      scanf("%d\n",&cadvot[i].opvot);
      printf("\nDeputado Federal.");
      for(i=0;i=10;i++){
       printf("%d\n",candidato[i].numcand," - %c\n",candidato[i].nomecand);
      };
+     If (candidato[i].numcand == 1)
+       df1 = df1 + 1;
+      Else if (candidato[i].numcand == 2)
+        df2 = df2 + 1;
+      Else if (candidato[i].numcand == 3)
+        df3 = df3 + 1;
+      Else if (candidato[i].numcand == 4)
+        df4 = df4 + 1;
+      Else if (candidato[i].numcand == 5)
+        df5 = df5 + 1;
+      Else if (candidato[i].numcand == 6)
+        df6 = df6 + 1;
+      Else if (candidato[i].numcand == 7)
+        df7 = df7 + 1;
+      Else if (candidato[i].numcand == 8)
+        df8 = df8 + 1;
+      Else if (candidato[i].numcand == 9)
+        df9 = df9 + 1;
+      Else if (candidato[i].numcand == 10)
+        df10 = df10 + 1;
+      Else nv2 = nv2 + 1;
+     candidato[i].numcand = candidato[i].numcand + 1
      scanf("%d\n",&cadvot[i].opvot);
      printf("\nSenador.");
      for(i=0;i=10;i++){
       printf("%d\n",candidato[i].numcand," - %c\n",candidato[i].nomecand);
      };
+     If (candidato[i].numcand == 1)
+       sn1 = sn1 + 1;
+      Else if (candidato[i].numcand == 2)
+        sn2 = sn2 + 1;
+      Else if (candidato[i].numcand == 3)
+        sn3 = sn3 + 1;
+      Else if (candidato[i].numcand == 4)
+        sn4 = sn4 + 1;
+      Else if (candidato[i].numcand == 5)
+        sn5 = sn5 + 1;
+      Else if (candidato[i].numcand == 6)
+        sn6 = sn6 + 1;
+      Else if (candidato[i].numcand == 7)
+        sn7 = sn7 + 1;
+      Else if (candidato[i].numcand == 8)
+        sn8 = sn8 + 1;
+      Else if (candidato[i].numcand == 9)
+        sn9 = sn9 + 1;
+      Else if (candidato[i].numcand == 10)
+        sn10 = sn10 + 1;
+      Else nv3 = nv3 +1;
+     candidato[i].numcand = candidato[i].numcand + 1
      scanf("%d\n",&cadvot[i].opvot);
      printf("\nGovernador.");
      for(i=0;i=10;i++){
       printf("%d\n",candidato[i].numcand," - %c\n",candidato[i].nomecand);
      };
+     If (candidato[i].numcand == 1)
+       gov1 = gov1 + 1;
+      Else if (candidato[i].numcand == 2)
+        gov2 = gov2 + 1;
+      Else if (candidato[i].numcand == 3)
+        gov3 = gov3 + 1;
+      Else if (candidato[i].numcand == 4)
+        gov4 = gov4 + 1;
+      Else if (candidato[i].numcand == 5)
+        gov5 = gov5 + 1;
+      Else if (candidato[i].numcand == 6)
+        gov6 = gov6 + 1;
+      Else if (candidato[i].numcand == 7)
+        gov7 = gov7 + 1;
+      Else if (candidato[i].numcand == 8)
+        gov8 = gov8 + 1;
+      Else if (candidato[i].numcand == 9)
+        gov9 = gov9 + 1;
+      Else if (candidato[i].numcand == 10)
+        gov10 = gov10 + 1;
+      Else nv4 = nv4 + 1;
+     candidato[i].numcand = candidato[i].numcand + 1
      scanf("%d\n",&cadvot[i].opvot);
      printf("\nPresidente.");
      for(i=0;i=10;i++){
       printf("%d\n",candidato[i].numcand," - %c\n",candidato[i].nomecand);
      };
+     If (candidato[i].numcand == 1)
+       pres1 = pres1 + 1;
+      Else if (candidato[i].numcand == 2)
+        pres2 = presn2 + 1;
+      Else if (candidato[i].numcand == 3)
+        pres3 = pres3 + 1;
+      Else if (candidato[i].numcand == 4)
+        pres4 = pres4 + 1;
+      Else if (candidato[i].numcand == 5)
+        pres5 = pres5 + 1;
+      Else if (candidato[i].numcand == 6)
+        pres6 = pres6 + 1;
+      Else if (candidato[i].numcand == 7)
+        pres7 = pres7 + 1;
+      Else if (candidato[i].numcand == 8)
+        pres8 = pres8 + 1;
+      Else if (candidato[i].numcand == 9)
+        pres9 = pres9 + 1;
+      Else if (candidato[i].numcand == 10)
+        pres10 = pres10 + 1;
+      Else nv5 = nv5 + 1;
+     candidato[i].numcand = candidato[i].numcand + 1
       scanf("%d\n",&cadvot[i].opvot);
 }
+void qtdvotocand();
+  { 
+       int de1,de2,de3,de4,de5,de6,de7,de8,de9,de10;
+       int df1,df2,df3,df4,df5,df6,df7,df8,df9,df10;
+       int sn1,sn2,sn3,sn4,sn5,sn6,sn7,sn8,sn9,sn10,
+       int gov1,gov2,gov3,gov4,gov5,gov6,gov7,gov8,gov9,gov10;
+       int pres1,pres2,pres3,pres4,pres5,pres6,pres7,pres8,pres9,pres10;
+    printf("Quantidade de votos"\n);   
+    printf("DeputadoEstadual1:%d", &de1,"DeputadoEstadual2:%d", de2,"DeputadoEstadual3:%d",&de3,"DeputadoEstadual4:%d",&de4,"DeputadoEstadual5:%d",&de5,"DeputadoEstadual6:%d",&de6,"DeputadoEstadual7:%d",&de7,"DeputadoEstadual8:%d",&de8,"DeputadoEstadual9:%d",&de9,"DeputadoEstadual10:%d",&de10\n);
+    printf("DeputadoFederal1:%d",&df1,"DeputadoFederal2:%d",&df2,"DeputadoFederal3:%d",&df3,"DeputadoFederal4:%d",&df4,"DeputadoFederal5:%d",&df5,"DeputadoFederal6:%d",&df6,"DeputadoFederal7:%d",&df7,"DeputadoFederal8:%d",&df8,"DeputadoFederal9:%d",&df9,"DeputadoFederal10:%d",&df10\n);   
+    printf("Senador1:%d",&sn1,"Senador2:%d",&sn2,"Senador3:%d",&sn3,"Senador4:%d",&sn4,"Senador5:%d",&sn5,"Senador6:%d",&sn6,"Senador7:%d",&sn7,"Senador8:%d",&sn8,"Senador9:%d",&sn9,"Senador10:%d",&sn10\n);    
+    printf("Governador1:%d",&gov1,"Governador2:%d",&gov2,"Governador3:%d",&gov3,"Governador4:%d",&gov4,"Governador5:%d",&gov5,"Governador6:%d",&gov6,"Governador7:%d",&gov7,"Governador8:%d",&gov8,"Governador9:%d",&gov9,"Governador10:%d",&gov10\n);    
+    printf("Presidente1:%d", &pres1,"Presidente2:%d", &pres2,"Presidente3:%d", &pres3,"Presidente4:%d", &pres4,"Presidente5:%d", &pres5,"Presidente6:%d", &pres6,"Presidente7:%d", &pres7,"Presidente8:%d", &pres8,"Presidente9:%d", &pres9,"Presidente10:%d", &pres10\n);    
+}  
+void eleitoresnvoto();
+  {
+      int nv1, nv2, nv3, nv4, nv5;
+      int qtdnvoto;
+    qtdnvoto = nv1 + nv2 + nv3 + nv4 + nv5;
+    printf("A quantidade de eleitores que não votaram eh: %d", &qtdnvoto);
+}
+  
