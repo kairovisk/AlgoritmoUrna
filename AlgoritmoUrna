@@ -84,6 +84,9 @@ int main(){
         case 6:
             registrolocal_vot();
             break;
+        case 7:
+            cadvot();
+            break;
         }
         printf("Deseja Repetir?zn  1 - Sim \n 2 - Nao \n");
         scanf("%d",&votoop);
